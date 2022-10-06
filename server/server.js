@@ -1,9 +1,12 @@
 const express = require('express');
 const { authMiddleware } = require('./utils/auth');
 const path = require('path');
+const dotenv = require("dotenv")
 
 // import ApolloServer
 const { ApolloServer } = require('apollo-server-express');
+
+dotenv.config();
 
 // import our typeDefs and resolvers
 const { typeDefs, resolvers } = require('./schemas');
