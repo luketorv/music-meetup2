@@ -1,6 +1,9 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 
 const SingleComment = props => {
+  const { id: commentId } = useParams();
+  console.log(commentId);
   return (
     <div>
       <div className="card mb-3">
