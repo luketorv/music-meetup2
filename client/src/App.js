@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext, useState} from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -19,9 +20,16 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+export const UserContext = createContext()
+
 function App() {
+  const [user, setUser] = useState(null)
+  const updateUser = (userData) => {
+    setUser(userData)
+  }
   return (
     <ApolloProvider client={client}>
+      <UserContext.Provider value={user}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
@@ -33,7 +41,7 @@ function App() {
               />
               <Route
                 path="/login"
-                element={<Login />}
+                element={<Login setUser={updateUser}/>}
               />
               <Route
                 path="/signup"
@@ -56,6 +64,7 @@ function App() {
           <Footer />
         </div>
         </Router>
+        </UserContext.Provider>
     </ApolloProvider>
   );
 }
