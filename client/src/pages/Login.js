@@ -1,9 +1,14 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { QUERY_LOGIN } from '../utils/queries';
+import { LOGIN_USER } from '../utils/mutations';
+
+import Auth from '../utils/auth';
+
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
 
   const [loginFunction, { data }] = useMutation(QUERY_LOGIN);
   console.log("login data", data)
@@ -18,19 +23,20 @@ const Login = (props) => {
     });
   };
 
-  // submit form
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    loginFunction( {
-      variables: { email: formState.email, password: formState.password }
-    })
+ // submit form
+const handleFormSubmit = async event => {
+  event.preventDefault();
 
-    // clear form values
-    setFormState({
-      email: '',
-      password: '',
+  try {
+    const { data } = await login({
+      variables: { ...formState }
     });
-  };
+  
+    Auth.login(data.login.token);
+  } catch (e) {
+    console.error(e);
+  }
+};
 
   return (
     <main className='flex-row justify-center mb-4'>
@@ -61,6 +67,7 @@ const Login = (props) => {
                 Submit
               </button>
             </form>
+            {error && <div>Login failed</div>}
           </div>
         </div>
       </div>
