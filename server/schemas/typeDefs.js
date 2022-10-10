@@ -32,6 +32,7 @@ const typeDefs = gql`
     user(username: String!): User
     comments(username: String): [Comment]
     comment(_id: ID!): Comment
+    youtube: String
   }
 
   type Mutation {
