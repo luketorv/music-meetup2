@@ -26,7 +26,7 @@ const CommentList = ({ comments, title }) => {
               <Link to={`/comment/${comment._id}`}>
                 <p>{comment.commentText}</p>
                 <p className="mb-0">
-                  Reactions: {comment.reactionCount} || Click to{' '}
+                  Replies: {comment.reactionCount} || Click to{' '}
                   {comment.reactionCount ? 'see' : 'start'} the discussion!
                 </p>
               </Link>

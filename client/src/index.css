@@ -131,9 +131,16 @@ nav a:hover {
   display: inline;
 }
 
+.YTcontainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 30px;
+}
+
 /* CARDS */
 .card {
-  margin: 0 0 20px 0;
+  margin: 20px 0 20px 20px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
   background-color: var(--light);
@@ -1248,3 +1255,4 @@ nav a:hover {
     align-items: center;
   }
 }
+

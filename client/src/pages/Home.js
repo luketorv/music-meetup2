@@ -18,7 +18,9 @@ const Home = () => {
   const loggedIn = Auth.loggedIn();
   return (
 <main>
-  {videoData && <iframe id="ytplayer" type="text/html" width="640" height="360" src={`https://www.youtube.com/embed/${videoData.youtube}`} title="Music Video of the Day"></iframe>}
+<div className="YTcontainer flex-row">
+  {videoData && <iframe id="ytplayer" type="text/html" width="640" height="360" src={`https://www.youtube.com/embed/${videoData.youtube}`} title="Music Video of the Day" ></iframe>}
+  </div>
   <div className="flex-row justify-space-between">
     {loggedIn && (
       <div className="col-12 mb-3">
@@ -31,7 +33,7 @@ const Home = () => {
           ) : (
             <CommentList
               comments={comments}
-              title="Some Feed for Comment(s)..."
+              title="Some Music Feedback..."
             />
           )}
         </div>
