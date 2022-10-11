@@ -3,7 +3,6 @@ import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import NoMatch from './pages/NoMatch';
@@ -11,6 +10,8 @@ import SingleComment from './pages/SingleComment';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import Home from './pages/Home';
+
+import TopBar from "./components/topbar/TopBar"
 
 
 const httpLink = createHttpLink({
@@ -44,8 +45,9 @@ function App() {
     <ApolloProvider client={client}>
       <UserContext.Provider value={user}>
       <Router>
+        <TopBar/>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
+          
           <div className="container">
             <Routes>
               <Route
