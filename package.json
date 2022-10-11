@@ -22,5 +22,8 @@
   "homepage": "https://github.com/luketorv/music-meetup2#readme",
   "devDependencies": {
     "concurrently": "^7.4.0"
+  },
+  "dependencies": {
+    "antd": "^4.23.5"
   }
 }

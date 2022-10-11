@@ -109,3 +109,8 @@ export const QUERY_ME_BASIC = gql`
     }
   }
 `;
+
+export const YOUTUBEID = gql`
+  {
+    youtube
+  }`
