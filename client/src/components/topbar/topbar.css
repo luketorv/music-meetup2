@@ -22,6 +22,11 @@
 
 }
 
+i:hover {
+    color: var(--secondary);
+    background-color: var(--dark);
+}
+
 .topIcon {
     font-size: 20px;
     margin-right: 10px;
@@ -31,6 +36,11 @@
 .title {
     display: flex;
     justify-content: center;
+}
+
+h1:hover {
+    color: var(--secondary);
+    background-color: var(--dark);
 }
 
 .rightNav {

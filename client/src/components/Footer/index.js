@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer className="w-100 mt-auto bg-secondary p-4">
-      <div className="container">&copy;2020 by our-team</div>
+      <div className="container">&copy;2022 by Luke Torvinen, Cesar Gonzalez, Blaine Brady, and Michael Martinez</div>
     </footer>
   );
 };
