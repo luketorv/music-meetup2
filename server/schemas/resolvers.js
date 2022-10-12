@@ -1,7 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 const axios = require("axios")
-const { User, Comment } = require('../models');
+const { User, Comment, FeaturedSong } = require('../models');
+const { findByIdAndUpdate } = require('../models/Comment');
 
 const resolvers = {
     Query: {
@@ -39,10 +40,26 @@ const resolvers = {
                 .populate('comments');
         },
         youtube: async () => {
-            const {data} = await axios.get(`https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&key=${process.env.youtube_apikey}&part=snippet,contentDetails,statistics&videoCategoryId=10&regionCode=US`)
-            const musicVideoNumber = Math.floor(Math.random() * 5)
-            const randomVideo = data.items[musicVideoNumber]
-            return randomVideo.id
+            const song = await FeaturedSong.find({})
+            const lastDate = song[0].today
+            console.log("youtube", song)
+            if (lastDate == (new Date()).toLocaleDateString) {
+              const recentSongs = song[0].songList
+              return recentSongs[recentSongs.length-1]
+            } else {
+              const {data} = await axios.get(`https://www.googleapis.com/youtube/v3/videos?chart=mostPopular&key=${process.env.youtube_apikey}&part=snippet,contentDetails,statistics&videoCategoryId=10&regionCode=US`)
+              const musicVideoNumber = Math.floor(Math.random() * 5)
+              const randomVideo = data.items[musicVideoNumber]
+              await FeaturedSong.findByIdAndUpdate(song[0]._id, {
+                $push: {
+                  songList: randomVideo.id
+                },
+                today: (new Date()).toLocaleDateString()
+              })
+              return randomVideo.id
+            }
+            
+            
           },
     },
 
