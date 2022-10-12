@@ -21,16 +21,16 @@ const SingleComment = props => {
   }
 
   return (
-    <div>
+    <div className='commentpages'>
       <div className="card mb-3">
-        <p className="card-header">
+        <div className="card-body">
+        <p>{comment.commentText}</p>
+          </div>
+        <div className="card-body">
           <span style={{ fontWeight: 700 }} className="text-light">
             {comment.username}
           </span>{' '}
-          Comment on {comment.createdAt}
-        </p>
-        <div className="card-body">
-          <p>{comment.commentText}</p>
+          Commented on {comment.createdAt}
         </div>
       </div>
 
