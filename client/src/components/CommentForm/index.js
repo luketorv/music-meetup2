@@ -69,7 +69,7 @@ const CommentForm = () => {
           onChange={handleChange}
         ></textarea>
         <button className="btn col-12 col-md-3" type="submit">
-          Submit
+          Comment
         </button>
       </form>
     </div>

@@ -1,39 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const CommentList = ({ comments, title }) => {
+const CommentList = ({ comments}) => {
   if (!comments.length) {
     return <h3>No comments Yet</h3>;
   }
 
   return (
     <div>
-      <h3>{title}</h3>
       {comments &&
         comments.map(comment => (
+
           <div key={comment._id} className="card mb-3">
-            <p className="card-header">
-              <Link
+         
+            <div className="card-body">
+              <Link to={`/comment/${comment._id}`}>
+                <p>{comment.commentText}</p>
+    
+                <p className="mb-0">
+                <Link
                 to={`/profile/${comment.username}`}
                 style={{ fontWeight: 700 }}
                 className="text-light"
               >
                 {comment.username}
-              </Link>{' '}  
-              comment on {comment.createdAt}
-            </p>
-            <div className="card-body">
-              <Link to={`/comment/${comment._id}`}>
-                <p>{comment.commentText}</p>
-                <p className="mb-0">
-                  Replies: {comment.reactionCount} || Click to{' '}
-                  {comment.reactionCount ? 'see' : 'start'} the discussion!
+              </Link>  ||
+                   
+                  Replies: {comment.reactionCount} || {' '}
+                  {comment.reactionCount ? 'View' : 'Engage'}
                 </p>
               </Link>
+              <h6> {comment.createdAt} </h6> 
             </div>
+  
           </div>
+          
         ))}
+      
     </div>
+
   );
 };
 
