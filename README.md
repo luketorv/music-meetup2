@@ -6,7 +6,7 @@ Music Meetup is a new way to discover music with an emphasis on community. Each 
 React, GraphQL, Node.js, Express.js, Ant Design, JWT, MongoDB, and Mongoose ODM
 
 ## Presentation
-
+Deployed Link: https://boiling-plateau-66922.herokuapp.com/
 ![musicmeetup1](https://user-images.githubusercontent.com/104324965/195642743-992d0b76-399f-4aa1-9c4d-45efe07323aa.jpg)
 
 ![musicmeetup2](https://user-images.githubusercontent.com/104324965/195642768-a073bfc1-dd14-43f8-b251-594ec8ead888.jpg)
