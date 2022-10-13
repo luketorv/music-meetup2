@@ -1,11 +1,12 @@
 const faker = require('faker');
 
 const db = require('../config/connection');
-const { Comment, User } = require('../models');
+const { Comment, User, FeaturedSong } = require('../models');
 
 db.once('open', async () => {
   await Comment.deleteMany({});
   await User.deleteMany({});
+  await FeaturedSong.deleteMany({});
 
   // create user data
   const userData = [];
@@ -67,6 +68,8 @@ db.once('open', async () => {
       { runValidators: true }
     );
   }
+
+  await FeaturedSong.create({today: "10/10/2022"})
 
   console.log('all done!');
   process.exit(0);
